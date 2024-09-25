@@ -27,8 +27,8 @@ class Movie
     void print()
     {
         cout << "Movie: " << title << endl;
-        cout << setw(15) << "Year: " << year << endl;
-        cout << setw(15) << "Writer: " << writer << endl << endl;
+        cout << setw(20) << "Year released: " << setw(5) << year << endl;
+        cout << setw(20) << "Screenwriter: " << setw(5) << writer << endl << endl;
     }
 
 };
