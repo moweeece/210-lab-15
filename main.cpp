@@ -1,5 +1,8 @@
 #include <iostream>
 #include <iomanip>
+#include <fstream>
+#include <vector>
+#include <string>
 using namespace std;
 
 // class Declaration
@@ -33,10 +36,38 @@ class Movie
 
 int main() {
 
-    // First movie object
-    Movie movie1;
-   
+    vector<Movie> movies_vec;
+    ifstream fin ("input.txt");
 
+    string t;  // temporary title variable
+    int y;     // temporary year variable
+    string w;  // temporary writer variable
+
+    if (fin.good()) {
+        while (getline(fin, t))
+        {
+            fin >> y;
+            fin.ignore();
+            getline(fin, w);
+
+            // temporary Movie object
+            Movie movie;
+            movie.setTitle(t);
+            movie.setYear(y);
+            movie.setWriter(w);
+
+            // populate movie vector
+            movies_vec.push_back(movie);
+
+            movie.print();
+        }
+
+        fin.close();
+    }
+    else 
+    {
+        cout << "Error reading file" << endl;
+    }
 
     return 0;
 }
